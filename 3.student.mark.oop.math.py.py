@@ -2,7 +2,6 @@ import math
 import numpy as np
 import curses
 
-#
 Student = []
 StudentID = []
 Course = []
@@ -75,7 +74,7 @@ def student_num():
     student = int(input("Enter the total: "))
     return student
 
-# Add student
+
 def add_student():
     print("==Add student==")
     id = input("Enter ID: ")
@@ -112,7 +111,6 @@ def add_course():
     CourseID.append(Cid)
 
 
-# Create mark for students
 def create_mark():
     g = 1
     op = len(Student)
@@ -186,7 +184,7 @@ def show_mark():
         print(f"ID-course: {Mark[i]['b']} ID-Student: {Mark[i]['a']}  mark:{Mark[i]['mark']}")
 
 
-# main
+#Main
 s = int(student_num())
 l = 1
 while l <= s:
