@@ -1,4 +1,8 @@
 # Student management
+import math
+import numpy
+import curses
+
 
 Students=[]
 StudentID=[]
