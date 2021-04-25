@@ -104,9 +104,9 @@ def add_course():
     Cname = input("Enter name: ")
     CC = input("Enter Credit: ")
     Cr_o = {
-        'cid': cid,
-        'cname': cname,
-        'cc': cc
+        'Cid': Cid,
+        'Cname': Cname,
+        'Cc': Cc
     }
     Course.append(Cr_o)
     CourseID.append(Cid)
@@ -115,8 +115,8 @@ def add_course():
 # Create mark for students
 def create_mark():
     g = 1
-    tu = len(Student)
-    while g <= tu:
+    op = len(Student)
+    while g <= op:
         g += 1
         x = input("Enter Student ID: ")
         if x in Student:
@@ -133,9 +133,6 @@ def create_mark():
                     print("Sid NOT FOUND !!")
                     break
                 Mark.append(kk)
-        else:
-            print("Cid NOT FOUND !!")
-            break
 
 
 def mark_gpa():
@@ -154,13 +151,14 @@ def mark_gpa():
         return 0
     print(gpa)
 
-    MarkGPA.append(gpa)
-    strace.refresh()
-    for point in Mark:
-        strace.clear()
+  MarkGPA.append(gpa)
         strace.refresh()
-        strace.addstr(" [Mark: ] %s   [GPA: ]%s \n" % (mark.get_id(), gpa))
-        break
+        for point in Mark:
+            strace.clear()
+            strace.refresh()
+            strace.addstr(" [Mark: ] %s   [GPA: ]%s \n" % (mark.get_id(), gpa))
+
+            break
 
 
 def gpa_sort():
@@ -209,7 +207,7 @@ mark_gpa()
 
 create_mark()
 for i in range(0, len(Course)):
-    ol = int(input("You Choose: "))
+    ol = int(input("Choose: "))
     if ol == 1:
         print("**Mark**")
         show_mark()
