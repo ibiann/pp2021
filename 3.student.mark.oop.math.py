@@ -81,7 +81,7 @@ def AddInforCourse():
     course = Course(id, name, credit)
     courses.append(course)
 
-
+# Marks information
 def inputMark():
     courseName = input("Input course's name to input marks: ")
     for c in courses:
@@ -92,7 +92,7 @@ def inputMark():
                 studentMarks.append(studentMark)
                 s.setAvg(calculateAvg(s.getId()))
 
-
+# Display
 def ShowlistCourses():
     print("Show course List:")
     for c in courses:
@@ -112,6 +112,7 @@ def ShowMarks():
         if courseName == studentMark.getCourse().getName():
             studentMark.describe()
 
+# Average Calculation
 def calculationAvg(id):
     marks = []
     for studentMark in studentMarks:
@@ -150,6 +151,8 @@ def showWeightedSum():
     id = input("Input student id: ")
     print("Weighted sum: " + str(calculateWeightedSum(id)))
 
+
+# Main
 def menu():
     option = "-1";
     while (option != "0"):
