@@ -6,12 +6,12 @@
 
 import math
 import numpy
-import curses
 
 Student = []
 Courses = []
 StudentMarks = []
 GPA = []
+Mark = []
 Mark_GPA = []
 Credit = []
 CoursesId = []
@@ -76,12 +76,6 @@ class Marks:
 
     def getCourse(self):
         return self.course
-
-    def getMark(self):
-        return self.mark
-
-    def describe(self):
-        print(self.student.getId() + " " + self.student.getName() + " "
               + self.course.getName() + " " + str(self.mark))
 
 # Input total number of students
