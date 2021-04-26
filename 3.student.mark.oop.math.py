@@ -1,218 +1,203 @@
+"""
+@Author: Pham Chi Trung
+@ID: BA9-065
+@Lab work 3
+"""
+
 import math
 import numpy
 import curses
 
-#
 Student = []
-StudentID = []
-Course = []
-CourseID = []
-Mark = []
-Credit = []
-gpa = []
-MarkGPA = []
+Courses = []
+StudentMarks = []
+GPA = []
+Mark_GPA = []
 
+#Add information
 
-class Students:
+class Student:
     def __init__(self, id, name, dob):
-        self.__id = id
-        self.__name = name
-        self.__dob = dob
+        self.id = id
+        self.name = name
+        self.dob = dob
         Student.append(self)
-        StudentID.append(self.__id)
 
-    def get_id(self):
+    def describe(self):
+        print(self.id + " " + self.name + " " + self.dob)
+
+    def getId(self):
         return self.id
 
-    def get_name(self):
+    def getName(self):
         return self.name
 
-    def get_dob(self):
-        return self.dob
+    def getAvg(self):
+        return self.avg
+
+    def setAvg(self, avg):
+        self.avg = avg
 
 
-class Courses:
-    def __init__(self, cid, cname, ccredit):
-        self._cid = cid
-        self._cname = cname
-        self._ccredit = ccredits
-        Course.append(self)
-        CourseID.append(self._cid)
-        Credit.append(self._ccredit)
+class Course:
+    def __init__(self, Cid,Cname,Ccredit):
+        self.Cid = Cid
+        self.Cname = Cname
+        self.Ccredit = Ccredit
 
-    def get_id(self):
-        return self._cid
+    def describe(self):
+        print("Id: " + self.Cid + " Course name: " + self.Cname + " credit: " + self.Ccredit)
 
-    def get_name(self):
-        return self.cname
-
-    def get_credit(self):
-        return self._ccredit
+    def getName(self):
+        return self.Cname
 
 
 class Marks:
-    def __init__(self, mid, nid, mark, gpa):
-        self._mid = mid
-        self._nid = nid
-        self._mark = mark
-        Mark.append(self)
+    def __init__(self, Student, Courses, Marks):
+        self.student = Student
+        self.course = Courses
+        self.mark = Marks
 
-    def get_mid(self):
-        return self.mid
+    def getStudent(self):
+        return self.student
 
-    def get_nid(self):
-        return self.nid
+    def getCourse(self):
+        return self.course
 
-    def get_mark(self):
+    def getMark(self):
         return self.mark
 
-    def get_gpa(self):
-        return self.gpa
-
-
-# Input total number of students
-def student_num():
-    print("==Total number of student==")
-    student = int(input("Enter the total: "))
-    return student
-
+    def describe(self):
+        print(self.student.getId() + " " + self.student.getName() + " "
+              + self.course.getName() + " " + str(self.mark))
 
 def add_student():
-    print("==Add student==")
-    id = input("Enter ID: ")
-    name = input("Enter NAME: ")
-    dob = input("Enter DOB: ")
-    st_u = {
-        'id': id,
-        'name': name,
-        'dob': dob
-    }
-    Student.append(st_u)
-    StudentID.append(id)
+    print("**Add student**")
+    id = input("Id: ")
+    Name = input("Name: ")
+    dob = input("DOB: ")
+    student = Student(id, Name, dob)
+    Student.append(student)
 
 
-# Add number of course
-def course_num():
-    print("==Add courses==")
-    course = int(input("Enter the total number: "))
-    return()
+def add_Course():
+    print("**Add course**")
+    id = input("id: ")
+    name = input("name: ")
+    credit = input("credit: ")
+    course = Course(id, name, credit)
+    Courses.append(course)
 
 
-# Add course
-def add_course():
-    print("---- ADD A COURSE ----")
-    Cid = input("Enter Course's ID: ")
-    Cname = input("Enter Course's NAME: ")
-    Cc = input("Enter Course's Credit:")
-    Cr_o = {
-        'cid': Cid,
-        'cname': Cname,
-        'cc': Cc
-    }
-    Course.append(Cr_o)
-    CourseID.append(Cid)
+
+def Add_Mark():
+    courseName = input("Enter the Mark of the courses: ")
+    for C in Courses:
+        if C.getName() == courseName:
+            for S in Student:
+                Mark = math.floor(float(input("Enter " + S.getName() + "'S Mark: ")))
+                StudentMark = Marks(S, C, Mark)
+                StudentMarks.append(StudentMark)
+                S.setAvg(calculateAvg(S.getId()))
+
+# Display
+
+def ShowlistCourses():
+    print("Show course list:")
+    for c in Courses:
+        c.describe()
 
 
-def create_mark():
-    g = 1
-    op = len(Student)
-    while g <= op:
-        g += 1
-        x = input("Enter Student ID: ")
-        if x in Student:
-            for i in range(0, len(CourseID)):
-                y = input("Enter Course ID: ")
-                if y in CourseID:
-                    mark = float(input("Enter Student mark: "))
-                    kk = {
-                        'mid': x,
-                        'nid': y,
-                        'mark': mark
-                    }
-                else:
-                    print("Sid NOT FOUND !!")
-                    break
-                Mark.append(kk)
+def ShowlistStudents():
+    print("Show student list:")
+    for s in Student:
+        s.describe()
 
 
-def mark_gpa():
+def ShowMarks():
+    courseName = input("Enter the name of course to show mark: ")
+    print("Marks " + courseName)
+    for StudentMark in StudentMarks:
+        if courseName == StudentMark.getCourse().getName():
+            StudentMark.describe()
 
-    int = numpy.array([self.mark])
-    null = numpy.array([self._ccredit])
-    strace.addstr("Enter Student ID:")
-    id = strace.getstr().decode()
-    if id in StudentID:
-        for i in range(0, len(Student)):
-            marktotal = numpy.sum(null)
-            gpatotal = numpy.sum(numpy.multiply(int, null))
-            strace.refresh()
-            gpa = gpatotal / marktotal
-            strace.refresh()
+# Average Calculation
+def Avg_calulation(id):
+    marks = []
+    for Studentmark in StudentMarks:
+        if (Studentmark.getStudent().getId() == id):
+            marks.append(Studentmark.getMark())
+    return numpy.average(marks)
 
-    else:
-        return 0
-    print(gpa)
+# Result of Avarage
 
-    MarkGPA.append(gpa)
-    for point in Mark:
-        strace.clear()
-        strace.refresh()
-        strace.addstr(" [Mark:]%s [GPA:]%s \n" % (mark.get_id(), gpa))
-        strace.refresh()
+def Show_Average():
+    id = input("Enter student's id: ")
+    for s in Student:
+        if id == s.getId():
+            print("Name: " + s.getName() + " Avg: " + str(s.getAvg()))
 
-        break
+def sortbyAvg():
+    sortedList = sorted(Student, key=lambda x: x.GPA, reverse=True)
+    for s in sortedList:
+        s.describe()
 
+# WeightSum Calculation
+def WeightedSumCalculation(id):
+    sum = 0
+    for c in Courses:
+        Smark = []
+        Warray = []
+        for studentMark in StudentMarks:
+            if (studentMark.getStudent().getId == id):
+                Smark.append(studentMark.getMark())
+                Warray.append(c.etc)
+        weights = numpy.array(Warray)
+        amark = numpy.array(Smark)
+        sum = sum + numpy.sum(numpy.dot(amark, weights))
+    return sum
 
-def gpa_sort():
-    sor_tg = numpy.array([MarkGPA])
-    sor_tg[::-1].sort()
-    strace.addstr("GPA sorted %s: \n" % sor_tg)
-    strace.refresh()
+# Show result of WeightedSum
+def WeightedSumShow():
 
+    Sid = input("Enter student's id: ")
+    print("Weighted sum: " + str(calculateWeightedSum(id)))
 
-def show_list_student():
-    print("**Student list**")
-    for i in range(0, len(Student)):
-        print(f"ID:{Student[i]['id']} name:{Student[i]['name']} DoB:{Student[i]['dob']}")
+# Main
+def menu():
+    option = "-1";
+    while (option != "0"):
+        print("""
+            1. Add students
+            2. Add courses
+            3. Add marks
+            4. Show student list
+            5. Show course list
+            6. Show mark list
+            7. Calculate average score
+            8. Calculate weighted sum
+            9. Sort student list
+            0. Exit
+            """)
+        option = input("You option: ")
+        if (option == "1"):
+            add_student()
+        elif (option == "2"):
+            add_Course()
+        elif (option == "3"):
+            Add_Mark()
+        elif (option == "4"):
+            ShowlistStudents()
+        elif (option == "5"):
+            ShowlistCourses()
+        elif (option == "6"):
+            ShowMarks()
+        elif (option == "7"):
+            Show_Average()
+        elif (option == "8"):
+           WeightedSumShow()
+        elif (option == "9"):
+            sortbyAvg();
 
-
-def show_list_course():
-    print("**Course list**")
-    for i in range(0, len(Course)):
-        print(f"ID:{Course[i]['id']}  name : {Course[i]['name']}")
-
-
-def show_mark():
-    print("**Mark list**")
-    for i in range(0, len(Mark)):
-        print(f"ID-course: {Mark[i]['b']} ID-Student: {Mark[i]['a']}  mark:{Mark[i]['mark']}")
-
-
-#Main
-s = int(student_num())
-l = 1
-while l <= s:
-    l += 1
-    add_student()
-    show_list_student()
-
-c = int(course_num())
-p = 1
-while p <= c:
-    p += 1
-    add_course()
-    show_list_course()
-
-# GPA
-mark_gpa()
-
-
-create_mark()
-for i in range(0, len(Course)):
-    ol = int(input("Choose: "))
-    if ol == 1:
-        print("**Mark**")
-        show_mark()
-        break
-    else:
-        break
+menu()
+print("End of program")
