@@ -13,6 +13,15 @@ Courses = []
 StudentMarks = []
 GPA = []
 Mark_GPA = []
+Credit = []
+CoursesId = []
+
+screen = curses.initscr()
+print("Approved")
+screen.refresh()
+curses.napms(3000)
+curses.endwin()
+print("Ended")
 
 #Add information
 
@@ -22,6 +31,7 @@ class Student:
         self.name = name
         self.dob = dob
         Student.append(self)
+        Student.append(self.id)
 
     def describe(self):
         print(self.id + " " + self.name + " " + self.dob)
@@ -31,6 +41,9 @@ class Student:
 
     def getName(self):
         return self.name
+
+    def getdob(self):
+        return self.dob
 
     def getAvg(self):
         return self.avg
@@ -71,6 +84,15 @@ class Marks:
         print(self.student.getId() + " " + self.student.getName() + " "
               + self.course.getName() + " " + str(self.mark))
 
+# Input total number of students
+
+def student_num():
+    print("**Total Students**")
+    student = int(input("Enter total number of student: "))
+    return student
+
+# Add Student
+
 def add_student():
     print("**Add student**")
     id = input("Id: ")
@@ -78,7 +100,9 @@ def add_student():
     dob = input("DOB: ")
     student = Student(id, Name, dob)
     Student.append(student)
+    Student.append(self.id)
 
+# Add course
 
 def add_Course():
     print("**Add course**")
@@ -88,7 +112,7 @@ def add_Course():
     course = Course(id, name, credit)
     Courses.append(course)
 
-
+# Add mark
 
 def Add_Mark():
     courseName = input("Enter the Mark of the courses: ")
@@ -101,7 +125,6 @@ def Add_Mark():
                 S.setAvg(calculateAvg(S.getId()))
 
 # Display
-
 def ShowlistCourses():
     print("Show course list:")
     for c in Courses:
