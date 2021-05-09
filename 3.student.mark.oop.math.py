@@ -66,7 +66,7 @@ class StudentMark:
               + self.__course.getName() + " " + str(self.__mark))
 
 # Add Information
-def AddInforStudent():
+def AddinforStudent():
     id = input("Enter Id: ")
     name = input("Enter Name: ")
     dob = input("Enter dob: ")
@@ -74,7 +74,7 @@ def AddInforStudent():
     students.append(student)
 
 # Add Course Info
-def AddInforCourse():
+def AddinforCourse():
     id = input("Enter Id: ")
     name = input("Enter name: ")
     credit = input("Enter credit: ")
@@ -113,7 +113,7 @@ def ShowMarks():
             studentMark.describe()
 
 # Average Calculation
-def calculationAvg(id):
+def calculatevg(id):
     marks = []
     for studentMark in studentMarks:
         if (studentMark.getStudent().getId() == id):
@@ -129,7 +129,7 @@ def showAvarage():
             print("Name: " + s.getName() + " Avg: " + str(s.getAvg()))
 
 def sortAvg():
-    sortedList = sorted(students, key=lambda x: x.gpa, reverse=True)
+    sortedList = sorted(students, key=lambda x: x.getAg(), reverse=True)
     for s in sortedList:
         s.describe()
 
