@@ -1,3 +1,10 @@
+import input as inp
+import output
+
+students = []
+studentsMarks = []
+courses = []
+
 def menu():
     option = "-1";
     while (option != "0"):
@@ -16,23 +23,22 @@ def menu():
             """)
         option = input("Your option: ")
         if (option == "1"):
-            AddInforStudent()
+            inp.AddinforStudent(students)
         elif (option == "2"):
-            AddInforCourse()
+            inp.AddinforCourse(courses)
         elif (option == "3"):
-            inputMark()
+            inp.inputMark(courses, students, studentsMarks)
         elif (option == "4"):
-            ShowlistStudents()
+            inp.ShowlistStudents(students)
         elif (option == "5"):
-            ShowlistCourses()
+            inp.ShowlistCourses(courses)
         elif (option == "6"):
-            ShowMarks()
+            inp.ShowMarks(studentsMarks)
         elif (option == "7"):
-            showAvarage()
+            inp.showAvarage(students)
         elif (option == "8"):
-            showWeightedSum();
+            inp.showWeightedSum(courses, studentsMarks);
         elif (option == "9"):
-            sortAvg();
+            inp.sortAvg(students);
 
 menu()
-print("The program has ended")
