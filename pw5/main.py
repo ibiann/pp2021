@@ -1,4 +1,4 @@
-import input as inp
+import input as input
 import output
 
 students = []
@@ -23,22 +23,22 @@ def menu():
             """)
         option = input("Your option: ")
         if (option == "1"):
-            inp.InputinfoStudent(students)
+            input.InputinfoStudent(students)
         elif (option == "2"):
-            inp.InputinfoCourse(courses)
+            input.InputinfoCourse(courses)
         elif (option == "3"):
-            inp.inputMark(courses, students, studentsMarks)
+            input.inputMark(courses, students, studentsMarks)
         elif (option == "4"):
-            inp.showlistStudent(students)
+            input.showlistStudent(students)
         elif (option == "5"):
-            inp.ShowlistCourses(courses)
+            input.ShowlistCourses(courses)
         elif (option == "6"):
-            inp.ShowMarks(studentsMarks)
+            input.ShowMarks(studentsMarks)
         elif (option == "7"):
-            inp.showAvarage(students)
+            input.showAvarage(students)
         elif (option == "8"):
-            inp.showWeightedSum(courses, studentsMarks);
+            input.showWeightedSum(courses, studentsMarks);
         elif (option == "9"):
-            inp.sortAvg(students);
+            input.sortAvg(students);
 
 menu()

@@ -1,4 +1,3 @@
-from domains import Student, Course, Mark
 import math
 
 # Add Information
@@ -12,6 +11,7 @@ def InputinfoStudent(students):
  f = open('Students.txt','a')
         f.write("StudnetID: " + id + "\n" + "StudentName: " + name + "\n" + "SudentDoB: " + DoB)
         f.close()
+
 # Add Course Info
 def InputinfoCourse(courses):
     id = input("Enter Id: ")
