@@ -41,4 +41,5 @@ def menu():
         elif (option == "9"):
             input.sortAvg(students);
 
+
 menu()

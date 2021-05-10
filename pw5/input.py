@@ -8,8 +8,8 @@ def InputinfoStudent(students):
     student = Student.Student(id, name, dob)
     students.append(student)
 
- f = open('Students.txt','a')
-        f.write("StudnetID: " + id + "\n" + "StudentName: " + name + "\n" + "SudentDoB: " + DoB)
+        f = open('Students.txt','a')
+        f.write("StudentID: " + id + "\n" + "StudentName: " + name + "\n" + "StudentDoB: " + DoB)
         f.close()
 
 # Add Course Info
@@ -35,6 +35,6 @@ def inputMark(courses, students, studentMark):
                 studentMarks.append(studentMark)
                 s.setAvg(calculateAvg(s.getId()))
 
-        f = open('Marks.txt', 'a')
-        f.write("CourseID: " + c_id + "\n" + "StudentID: " + s_id + "\n" + "Mark_detail: " + str(mark))
-        f.close()
+    f = open('Marks.txt', 'a')
+    f.write("CourseID: " + id + "\n" + "StudentID: " + id + "\n" + "Mark_detail: " + str(mark))
+    f.close()
