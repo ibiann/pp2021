@@ -1,27 +1,30 @@
-from domains import Student, Course, Mark
 import math
 
+from pp2021.pw4.output import calculateAvg
 
-def AddinforStudent(students):
+# Add Information
+def InputinfoStudent(students):
     id = input("Enter Id: ")
     name = input("Enter Name: ")
     dob = input("Enter dob: ")
-    students = Student(id, name, dob)
-    students.append(students)
+    student = Student.Student(id, name, dob)
+    students.append(student)
 
-def AddinforCourse(courses):
+# Add Course Info
+def InputinfoCourse(courses):
     id = input("Enter Id: ")
     name = input("Enter name: ")
     credit = input("Enter credit: ")
-    courses = Course(id, name, credit)
-    courses.append(courses)
+    course = Course.Course(id, name, credit)
+    courses.append(course)
 
-def inputMark(courses, students, studentMarks):
-    courseName = input("Input course's name to input marks: ")
+# Marks information
+def inputMark(courses, students, studentMark):
+    courseName = input("Enter name of course for the mark: ")
     for c in courses:
         if c.getName() == courseName:
             for s in students:
                 mark = math.floor(float(input("Input " + s.getName() + "'s mark: ")))
-                studentMark = StudentMark.StudentMark(s, c, mark)
+                studentMark = StudentMark(s, c, mark)
                 studentMarks.append(studentMark)
-                s.setAvg(calculateAvg(s.getId(), studentMarks))
+                s.setAvg(calculateAvg(s.getId()))

@@ -1,18 +1,18 @@
 import numpy
 
-def ShowlistCourses(courses):
+def sshowlistCourses(courses):
     print("Show course List:")
     for c in courses:
         c.describe()
 
 
-def ShowlistStudents(students):
+def showlistStudents(students):
     print("Show student List:")
     for s in students:
         s.describe()
 
 
-def ShowMarks(studentMarks):
+def showMarks(studentMarks):
     courseName = input("Enter name of course to show marks: ")
     print("Student Marks for " + courseName)
     for studentMark in studentMarks:

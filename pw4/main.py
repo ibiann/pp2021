@@ -23,13 +23,13 @@ def menu():
             """)
         option = input("Your option: ")
         if (option == "1"):
-            inp.AddinforStudent(students)
+            inp.InputinfoStudent(students)
         elif (option == "2"):
-            inp.AddinforCourse(courses)
+            inp.InputinfoCourse(courses)
         elif (option == "3"):
             inp.inputMark(courses, students, studentsMarks)
         elif (option == "4"):
-            inp.ShowlistStudents(students)
+            inp.showlistStudent(students)
         elif (option == "5"):
             inp.ShowlistCourses(courses)
         elif (option == "6"):
