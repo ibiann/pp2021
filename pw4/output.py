@@ -37,7 +37,7 @@ def sortAvg(students):
     for s in sortedList:
         s.describe()
 
-def calculationWeightedSum(id, courses, studentMarks):
+def WeightedSumcalculate(id, courses, studentMarks):
     sum = 0
     for c in courses:
         smark = []

@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 from pp2021.pw4.output import calculateAvg
 
@@ -7,7 +8,7 @@ def InputinfoStudent(students):
     id = input("Enter Id: ")
     name = input("Enter Name: ")
     dob = input("Enter dob: ")
-    student = Student.Student(id, name, dob)
+    student = Students(id, name, dob)
     students.append(student)
 
 # Add Course Info
@@ -15,7 +16,7 @@ def InputinfoCourse(courses):
     id = input("Enter Id: ")
     name = input("Enter name: ")
     credit = input("Enter credit: ")
-    course = Course.Course(id, name, credit)
+    course = Course(id, name, credit)
     courses.append(course)
 
 # Marks information
